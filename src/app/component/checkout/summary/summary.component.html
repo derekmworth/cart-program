@@ -1,0 +1,49 @@
+<div class="summary-table-container">
+  <table style="width: 100%;" mat-table [dataSource]="dataSource">
+    <!-- Title & Description column -->
+    <ng-container matColumnDef="description">
+      <th class="header-description" mat-header-cell *matHeaderCellDef>Description</th>
+      <td class="body-title-description" mat-cell *matCellDef="let item">
+        <span class="body-title"> {{item.title}} </span><br>
+        <span class="body-description"> {{item.description}} </span>
+      </td>
+      <td
+        class="footer-description-total"
+        mat-footer-cell
+        *matFooterCellDef>
+        Totals
+      </td>
+    </ng-container>
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td class="body-price" mat-cell *matCellDef="let item" >{{item.price | currency}} </td>
+      <td class="footer-price" mat-footer-cell *matFooterCellDef> {{subTotal | currency}} </td>
+    </ng-container>
+    <!-- Discount Column -->
+    <ng-container matColumnDef="discount">
+      <th mat-header-cell *matHeaderCellDef>Discount</th>
+      <td class="body-discount" mat-cell *matCellDef="let item"> {{item.discount | currency}} </td> <!--  -->
+      <td class="footer-discount" mat-footer-cell *matFooterCellDef>$0.00</td> <!-- {{totalDiscount | currency}} -->
+    </ng-container>
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td class="body-quantity" mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalQuantity}} </td>
+    </ng-container>
+    <!-- Total Column -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Item Total</th>
+      <td class="body-total" mat-cell *matCellDef="let item"> {{item.total | currency}} </td>
+      <td class="footer-total" mat-footer-cell *matFooterCellDef> {{grandTotal | currency}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr> <!--  -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> <!--  -->
+    <tr mat-footer-row class="mat-footer" *matFooterRowDef="displayedColumns; sticky: true;"></tr> <!--  -->
+  </table>
+</div>
+
+<app-discount-code></app-discount-code>
+

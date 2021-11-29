@@ -1,0 +1,56 @@
+<div>
+  <header>
+      <mat-toolbar-row class="checkout-header">
+        <button routerLink="/cart" class="btn-back-to-cart" mat-button>
+          <mat-icon>arrow_back</mat-icon>
+          Back to Cart
+        </button>
+        <span class="header-text">Complete Checkout</span>
+      </mat-toolbar-row>
+  </header>
+</div>
+
+
+<div fxLayout="row"> <!-- style="display: flex;" -->
+  <div class="expansion-accordion">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let item of [1]; first as isFirst" [expanded]="isFirst"> <!-- ORDER SUMMARY -->
+        <mat-expansion-panel-header>
+          <mat-panel-title class="summary">ORDER SUMMARY</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-summary></app-summary>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel> <!-- BILLING INFORMATION -->
+        <mat-expansion-panel-header>
+          <mat-panel-title class="billing">BILLING INFORMATION</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-billing></app-billing>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel> <!-- SHIPPING INFORMATION -->
+        <mat-expansion-panel-header>
+          <mat-panel-title class="shipping">SHIPPING INFORMATION</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-shipping></app-shipping>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="payment-container">
+    <mat-card class="payment-details-card">
+      <mat-card-title class="payment-details-title" fxLayoutAlign="start start" >PAYMENT DETAILS</mat-card-title>
+      <mat-card-content>
+
+        <app-payment></app-payment>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+

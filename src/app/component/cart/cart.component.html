@@ -1,0 +1,93 @@
+<div style="display: flex;" class="container" *ngIf="product.length != 0"> <!-- -->
+  <div class="cart-container" >
+      <table mat-table  class="mat-elevation-z8" [dataSource]="dataSource"> <!-- -->
+
+        <!-- Image Column -->
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef> Product </th>
+          <td mat-cell *matCellDef="let item"> <img src="{{item.image}}" alt=""> </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th style="text-align: left;" mat-header-cell *matHeaderCellDef>  </th>
+          <td style="text-align: left;" mat-cell *matCellDef="let item">
+            <span style="font-weight: bold;"> {{item.title}} </span><br>
+            <span> {{item.description}} </span>
+          </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td class="quantity" mat-cell *matCellDef="let item">
+            <button mat-icon-button ><mat-icon>keyboard_arrow_down</mat-icon></button> <!-- (click)="decrementItem(item.title)" -->
+            {{item.quantity}}
+            <button mat-icon-button ><mat-icon>keyboard_arrow_up</mat-icon></button> <!-- (click)="incrementItem(item)" -->
+          </td>
+          <td mat-footer-cell *matFooterCellDef>
+            <button mat-button routerLink="/products">
+              Continue Shopping
+            </button>
+          </td>
+        </ng-container>
+        <!-- Price Column/Continue Shopping button -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let item"> {{item.price | currency}} </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <!-- Remove Cart Item Column/Empty Cart button -->
+        <ng-container matColumnDef="remove">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let item">
+            <button mat-icon-button (click)="removeItem(item)">
+              <mat-icon class="delete-icon">delete</mat-icon>
+            </button>
+          </td>
+          <td mat-footer-cell *matFooterCellDef>
+            <button mat-button (click)="emptyCart()">
+              Empty Cart
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns;"></tr>
+      </table>
+  </div>
+
+  <div class="checkout-container">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-content>
+        <form>
+          <mat-form-field class="total-price">
+            <mat-label>Subtotal</mat-label>
+            <mat-label class="total-amt"> {{subTotal | currency}} </mat-label>
+            <input matInput>
+          </mat-form-field>
+          <button mat-button routerLink="/checkout">
+            Proceed to Checkout
+          </button><br>
+          <!-- <mat-icon style="font-size: 3em;" fontSet="fab" fontIcon="fa-cc-visa"></mat-icon>
+          <mat-icon style="font-size: 3em;" fontSet="fab" fontIcon="fa-cc-mastercard"></mat-icon>
+          <mat-icon style="font-size: 3em;" fontSet="fab" fontIcon="fa-cc-paypal"></mat-icon>
+          <mat-icon style="font-size: 3em;" fontSet="fab" fontIcon="fa-cc-discover"></mat-icon> -->
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="container" *ngIf="product.length == 0">
+  <mat-card class="empty-cart">
+    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+    <h2>Your cart is empty</h2>
+    <h3>Add item(s) to it now</h3>
+    <button mat-button routerLink="/products">Shop Now</button>
+  </mat-card>
+</div>

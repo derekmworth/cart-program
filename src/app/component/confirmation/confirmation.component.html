@@ -1,0 +1,42 @@
+<!-- Header -->
+<div class="header">
+  <header>
+    <mat-toolbar-row class="confirmation-toolbar">
+      <button class="btn-services-dashboard" routerLink="/products" mat-button>
+        <mat-icon class="header-icon-align">arrow_back</mat-icon>
+        Home Page
+      </button>
+      <span class="header-text">Order Confirmation</span>
+    </mat-toolbar-row>
+  </header>
+</div>
+
+
+  <!-- Container for the rest of the page -->
+<div class="container">
+
+  <div class="thank-you">
+    <mat-icon class="check-icon">check_circle</mat-icon>
+    <span class="icon-align">Thank you for your purchase!</span>
+    <br>
+    <br>
+    <p>A confirmation email with order details will be sent to</p>
+    <p><b>dworth@nabp.pharmacy</b></p>
+  </div>
+
+  <mat-toolbar class="second-toolbar">
+    <mat-toolbar-row>
+      <span class="order-num-date">ORDER NUMBER: 123-456-7890<br>DATE PLACED: {{today | date: 'MM/dd/yyyy'}}</span>
+      <span class="spacer"></span>
+      <button mat-button class="btn-print-confirm" (click)="printPage()">Print Confirmation</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<!-- Order Summary card (with summary table in a different component) -->
+  <mat-card class="summary-table">
+
+    <app-confirm-table></app-confirm-table>
+
+  </mat-card>
+
+</div>

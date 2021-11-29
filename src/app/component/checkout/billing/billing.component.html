@@ -1,0 +1,73 @@
+<div fxLayout="row">
+  <div class="slide-toggle">
+    <mat-label>SAME AS MY NABP ACCOUNT/PROFILE</mat-label>
+      <mat-slide-toggle
+      class="button-slide-toggle"
+      (change)="onToggleUserProfile()"
+      [(ngModel)]="useSavedInfo"
+      color="warn">
+    </mat-slide-toggle>
+  </div>
+  <div style="width: 100%; ">
+    <button class="btn-change-my-info">
+      <mat-icon style="font-weight: bold;">arrow_forward</mat-icon>
+      <span class="arrow-icon">Change My Information</span>
+    </button>
+  </div>
+</div>
+
+<div style="display: flex;">
+
+  <form style="display: flex;" class="billing-info-form" [formGroup]="myFormGroup" (change)="updateBillingInfo()">
+    <!-- << Lefthand Side << (Name/Address/City/Email) -->
+    <div class="left-column">
+      <!-- Name -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="name" required>
+        <mat-label>Name</mat-label>
+      </mat-form-field>
+      <!-- Address -->
+      <mat-form-field>
+        <input type="tel" matInput formControlName="address" required>
+        <mat-label>Street Address</mat-label>
+      </mat-form-field>
+      <!-- City -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="city" required>
+        <mat-label>City</mat-label>
+      </mat-form-field>
+      <!-- Email -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="email" required>
+        <mat-label>Contact Email Address</mat-label>
+      </mat-form-field>
+    </div>
+
+    <!-- >> Righthand Side >> (Phone/Zip/State/Country) -->
+    <div class="right-column">
+      <!-- Phone Number -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="phone" required>
+        <mat-label>Contact Phone Number</mat-label>
+        <mat-hint>Include area code</mat-hint>
+      </mat-form-field>
+      <!-- Zip Code -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="zip" required>
+        <mat-label>Zip Code/Postal Code</mat-label>
+      </mat-form-field>
+      <!-- State -->
+      <mat-form-field>
+        <input type="email" matInput formControlName="state" email required>
+        <mat-label>State/Territory/Region/Province</mat-label>
+      </mat-form-field>
+      <!-- Country -->
+      <mat-form-field>
+        <input type="text" matInput formControlName="country" required>
+        <mat-label>Country</mat-label>
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+

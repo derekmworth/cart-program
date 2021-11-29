@@ -1,0 +1,81 @@
+.container {
+  padding-top: 20px;
+  width: 100%;
+}
+
+// Mat Table
+table {
+  width: 100%;
+  .mat-header-cell {
+    text-align: center;
+    padding: 15px;
+    color: #595499;
+  }
+}
+
+// Mat Table Cells
+.mat-cell {
+  text-align: center;
+  padding: 10px;
+  color: #595499;
+  font-weight: 100;
+  img {
+    width: 120px;
+    height: 150px;
+  }
+  .quantity mat-icon {
+    vertical-align: middle;
+  }
+  .delete-icon {
+    color: #D50032;
+  }
+}
+
+// Mat Footer Row
+.mat-button {
+  border: 2px solid #D50032;
+  font-weight: bold;
+  margin: 5px;
+  color: #D50032;
+  border-radius: 20px;
+  padding: 0 30px;
+}
+.mat-button:hover {
+  background-color: #D50032;
+  color: #FFF;
+  transition: 0.1s ease-in-out;
+}
+
+// Checkout card form/Visa/MasterCard/PayPal/Discover icons
+.checkout-container {
+  width: 70%;
+  text-align: center;
+  mat-card.mat-elevation-z8 {
+    margin: 0px 20px;
+    position: sticky;
+    top: 200px;
+    .mat-icon {
+      margin: 0px 15px;
+      color: darkgray;
+    }
+  }
+}
+
+.total-price {
+  width: 100%;
+  font-size: larger;
+  .total-amt {
+    float: right;
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+  }
+}
+
+// If cart is empty, display this card
+.empty-cart {
+  text-align: center;
+  img {
+    width: 200px;
+  }
+}

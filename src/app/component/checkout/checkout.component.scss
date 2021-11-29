@@ -1,0 +1,76 @@
+// Header
+.checkout-header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: #E5E4EF;
+  padding: 40px 20px 40px 0px;
+  .header-text {
+    font-size: 35px;
+    font-weight: 100;
+    color: #595499;
+    width: 100%;
+    padding-left: 300px;
+  }
+}
+
+// Header - "Back to order review" button
+.btn-back-to-cart {
+  font-size: 20px;
+  color:  #d50032;
+  font-weight: bold;
+}
+.btn-back-to-cart:hover {
+  color: #595499;
+}
+
+// Expansion accordion
+.expansion-accordion {
+  margin: 30px 15px;
+  width: 100%;
+  .summary {
+    font-weight: bold;
+    font-size: large;
+    color: #595499;
+  }
+  .billing {
+    font-weight: bold;
+    font-size: large;
+    color: #595499;
+  }
+  .shipping {
+    font-weight: bold;
+    font-size: large;
+    color: #595499;
+  }
+}
+
+// Paymet details card
+.payment-container {
+  width: 60%;
+  .payment-details-card {
+    margin: 30px 15px;
+    max-height: 450px;
+    overflow-y: auto;
+    .payment-details-title {
+      font-size: large;
+      font-weight: bold;
+      color: #595499;
+    }
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}

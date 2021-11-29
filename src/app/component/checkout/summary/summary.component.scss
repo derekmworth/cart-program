@@ -1,0 +1,94 @@
+// Summary - table
+.summary-table-container {
+  position: relative;
+  min-height: 300px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+// Table Header
+.mat-header-cell {
+  text-align: center;
+  padding: 15px;
+  color: #595499;
+  background-color: #E5E4EF;
+}
+.header-description {
+    text-align: left;
+  }
+
+// Table Body
+.mat-cell {
+  text-align: center;
+  padding: 10px;
+  color: #595499;
+  font-weight: 100;
+}
+.body-title-description {
+  text-align: left;
+  .body-title {
+    font-weight: bold;
+    color: #595499;
+  }
+  .body-description {
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+}
+.body-price {
+  color: #595499;
+}
+.body-discount {
+  color: #d50032;
+  font-weight: bold;
+}
+.body-quantity {
+  color: #595499;
+}
+.body-total {
+  font-weight: bold;
+  color: #595499;
+}
+
+// Table Footer
+.mat-footer-cell {
+  font-size: 20px;
+  text-align: center;
+  padding: 15px;
+  color: #595499;
+  font-weight: 100;
+  border-top: 2px solid #595499;
+}
+.footer-description-total {
+  text-align: right;
+  font-weight: bold;
+  color: #595499;
+}
+.footer-price {
+  font-weight: 100;
+}
+.footer-discount {
+  color: #d50032;
+  font-weight: bold;
+}
+.footer-total {
+  font-weight: bold;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}

@@ -1,0 +1,25 @@
+<div class="header">
+  <header>
+    <mat-toolbar>
+      <mat-toolbar-row class="toolbar">
+        <button routerLink="/products" class="btn-main" mat-button>Storefront</button>
+        <mat-form-field class="searchbar">
+          <mat-label>
+            Search products
+            <mat-icon class="icon">search</mat-icon>
+          </mat-label>
+          <input type="text" (keyup)="search($event)" matInput placeholder="">
+        </mat-form-field>
+        <span class="spacer"></span>
+
+          <button routerLink="/cart" class="shopping-cart" mat-icon-button>
+            <mat-icon matBadge="{{totalItem}}" matBadgePosition="below before" [matBadgeHidden]="totalItem == 0">
+              add_shopping_cart
+            </mat-icon>
+          </button>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+</div>
+

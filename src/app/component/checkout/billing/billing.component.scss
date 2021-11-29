@@ -1,0 +1,46 @@
+// "Same as Profile Information" text/slide toggle
+.slide-toggle {
+  width: 100%;
+  text-align: center;
+  .button-slide-toggle {
+    margin-left: 20px;
+  }
+}
+// "Change My Information" button/arrow icon
+.btn-change-my-info {
+  font-size: 20px;
+  font-weight: bold;
+  color: #d50032;
+  background-color: #fff;
+  border: none;
+  .arrow-icon {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+}
+.btn-change-my-info:hover {
+  color: rgb(153, 16, 16);
+}
+// Main billing form
+.billing-info-form mat-form-field {
+  width: 100%;
+  padding: 15px;
+  .left-column {
+    width: 50%;
+  }
+  .right-column {
+    width: 50%;
+  }
+}
+
+::ng-deep.mat-focused.mat-form-field-label {
+  color: #D50032!important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #D50032;
+}
+:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #D50032 ;
+}

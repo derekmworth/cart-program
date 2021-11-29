@@ -1,0 +1,88 @@
+// Payment Form - name/ccNum/expDate/CVV
+.cc-name {
+  width: 100%;
+}
+.cc-num {
+  width: 100%;
+}
+.cc-exp-month {
+  width: 33%;
+}
+.cc-exp-year {
+  width: 33%;
+}
+.cc-cvv {
+  width: 33%;
+  text-align: right;
+  padding-top: 10px;
+}
+
+// Discount amount
+.discount {
+  width: 100%;
+  pointer-events: none;
+  font-weight: bold;
+  .discount-amount {
+    float: right;
+    color: black;
+  }
+  .discount-hint {
+    color: #d50032;
+    font-weight: bold;
+  }
+}
+
+// Total amount
+.total {
+  width: 100%;
+  pointer-events: none;
+  font-weight: bold;
+  .total-amount {
+    float: right;
+    color: black;
+  }
+}
+
+// "Place Order" button
+.btn-order {
+  color: #fff;
+  background-color: #d50032;
+  padding: 0px 100px;
+  border-radius: 20px;
+}
+.btn-order:hover:enabled {
+  background-color: maroon;
+}
+
+// Payment authorization text
+.pay-auth-text {
+  margin-top: 40px;
+  color: gray;
+  .myClass {
+    color: #d50032;
+  }
+  .icon-align {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+
+

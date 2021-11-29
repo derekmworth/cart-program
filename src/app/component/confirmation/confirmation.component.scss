@@ -1,0 +1,87 @@
+//Header toolbar
+.confirmation-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: #E5E4EF;
+  padding: 40px 20px 40px 0px;
+  border: 1px solid #595499;
+  .btn-services-dashboard {
+    font-size: 20px;
+    font-weight: bold;
+    color:  #d50032;
+    .header-icon-align {
+      vertical-align: middle;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  }
+  .btn-services-dashboard:hover {
+    color: #595499;
+  }
+  .header-text {
+    font-size: 35px;
+    color: #595499;
+    font-weight: 100;
+    width: 100%;
+    padding-left: 400px;
+  }
+}
+
+// "Thank you for your purchase" text
+.thank-you {
+  text-align: center;
+  color: #595499;
+  margin: 40px;
+  .check-icon {
+    vertical-align: middle;
+    transform: scale(1.5);
+    color: #d50032;
+  }
+  .icon-align {
+    vertical-align: middle;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: x-large;
+  }
+}
+
+// Second toolbar (order number/date/print confirmation)
+.second-toolbar {
+  background-color: #E5E4EF;
+  color: #595499;
+  font-weight: bold;
+  padding: 15px;
+  border: 1px solid #595499;
+  .order-num-date {
+    font-size: medium;
+  }
+  .btn-print-confirm {
+    color: #d50032;
+    background-color: #FFF;
+    border: 2px solid #d50032;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: medium;
+  }
+  .btn-print-confirm:hover {
+    background-color: #d50032;
+    color: #FFF;
+    transition: 0.1s ease-in-out;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+// Order summary card
+.summary-table {
+  width: 100%;
+  margin: 20px 0px;
+  border: 1px solid lightgray;
+}
+
+@media print {
+  .header {display: none;}
+  .btn-print-confirm {display: none;}
+}

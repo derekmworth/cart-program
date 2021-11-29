@@ -1,0 +1,51 @@
+// Header toolbar
+.toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: #E5E4EF;
+  padding: 40px 20px 40px 0px;
+  .btn-main {
+    font-size: 30px;
+    color: #D50032;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+// Searchbar
+.searchbar {
+  border-radius: 3px;
+  width: 500px;
+  margin-left: 30px;
+  padding-top: 10px;
+  color: #595499;
+  .icon {
+    position: absolute;
+    color: #595499;
+    padding: 2px 5px;
+  }
+}
+// Shopping Cart icon
+.shopping-cart {
+  color: #D50032;
+  background-color: #E5E4EF;
+  height: 64px;
+  width: 64px;
+  .mat-icon {
+    font-size: 36px;
+    ::ng-deep .mat-badge-content {
+      background: rgb(89, 84, 153, 0.3);
+      color: #595499;
+    }
+  }
+}
+
+@media print{
+  .header {display: none;}
+}
+
+
+
+
+

@@ -1,0 +1,46 @@
+// Product categories
+.categories {
+  position: relative;
+  text-align: center;
+  margin: 30px 0;
+  img {
+    width: 64px;
+  }
+  .jewelery-image {
+    width: 62px;
+    margin-top: 5px;
+  }
+  button {
+    margin: 20px 15px;
+    text-align: center;
+    padding: 10px;
+  }
+  button:hover {
+    color: #D50032;
+  }
+}
+// Products list
+.card {
+  padding: 20px;
+  margin: 50px;
+  img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+  }
+  img:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+  }
+  button:hover {
+    transition: 0.2s ease-in-out;
+    background-color: rgb(216, 216, 216);
+  }
+}
+
+
+
+
+
+
