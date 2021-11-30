@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -18,9 +19,13 @@ export class ConfirmationComponent implements OnInit {
   today: number = Date.now();
 
 
-  constructor() { }
+  constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
+  }
+
+  emptyCart() {
+    this.cartService.removeAllCart();
   }
 
 }

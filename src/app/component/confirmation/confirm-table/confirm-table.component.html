@@ -17,7 +17,7 @@
     <!-- Price Column -->
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let item">{{subTotal | currency}}</td>
+      <td mat-cell *matCellDef="let item">{{item.total | currency}}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <!-- Discount Column -->
@@ -35,7 +35,7 @@
     <!-- Total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Item Total</th>
-      <td class="body-total" mat-cell *matCellDef="let item">{{item.total | currency}}</td>
+      <td class="body-total" mat-cell *matCellDef="let item">{{item.price | currency}}</td>
       <td class="footer-total" mat-footer-cell *matFooterCellDef>{{grandTotal | currency}}</td> <!-- {{getTotalCost() | currency}} -->
     </ng-container>
 

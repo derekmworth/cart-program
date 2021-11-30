@@ -6,11 +6,12 @@
   background-color: #E5E4EF;
   padding: 40px 20px 40px 0px;
   .header-text {
+    position: absolute;
     font-size: 35px;
     font-weight: 100;
     color: #595499;
     width: 100%;
-    padding-left: 300px;
+    text-align: center;
   }
 }
 

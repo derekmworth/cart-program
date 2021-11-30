@@ -1,4 +1,3 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../component/product/product.model';
@@ -43,15 +42,13 @@ export class CartService {
     return total;
   }
 
-  // updateValues() {
-  //   var newTotal = 0;
-  //   for (var cartItem of this.cartItemList) {
-  //     newTotal += (cartItem.quantity * eval(cartItem.subTotal));
-  //   }
-  //   newTotal = Math.max(newTotal, 0);
-  //   this.cartTotalBehaviorSubject.next(newTotal);
-  //   return newTotal;
-  // }
+  updateValues() {
+    var newTotal = 0;
+    for (var cartItem of this.cartItemList) {
+      newTotal += (cartItem.quantity * eval(cartItem.title));
+    }
+    return newTotal;
+  }
 
   // Increment/decrement cart items (not working)
 
@@ -61,7 +58,7 @@ export class CartService {
         cartItem.quantity++;
       }
     }
-  //   this.updateValues();
+    this.updateValues();
   }
 
   decrementItem(product : Product) {

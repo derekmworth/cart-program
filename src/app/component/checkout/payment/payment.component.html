@@ -9,7 +9,7 @@
     <!-- Credit card number -->
     <mat-form-field class="cc-num">
       <mat-label>Credit Card Number</mat-label>
-      <input type="tel" mask="0000-0000-0000-0000" matInput [errorStateMatcher]="customErrorStateMatcher" formControlName="ccNum" minlength="19" maxlength="19" #input required>
+      <input type="tel" matInput [errorStateMatcher]="customErrorStateMatcher" formControlName="ccNum" minlength="16" maxlength="16" #input required>
       <mat-hint align="end">{{ input.value?.length || 0}} /16</mat-hint>
       <mat-error *ngIf="this.form.controls.ccNum.hasError('required')">Entry must not be blank</mat-error>
     </mat-form-field>
