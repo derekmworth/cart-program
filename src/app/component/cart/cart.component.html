@@ -5,7 +5,7 @@
         <!-- Image Column -->
         <ng-container matColumnDef="image">
           <th mat-header-cell *matHeaderCellDef> Product </th>
-          <td mat-cell *matCellDef="let item"> <img src="{{item.image}}" alt=""> </td>
+          <td mat-cell *matCellDef="let item"> <img class="product-img" src="{{item.image}}" alt=""> </td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
@@ -23,9 +23,9 @@
         <ng-container matColumnDef="quantity">
           <th mat-header-cell *matHeaderCellDef> Quantity </th>
           <td class="quantity" mat-cell *matCellDef="let item">
-            <button mat-icon-button ><mat-icon>keyboard_arrow_down</mat-icon></button> <!-- (click)="decrementItem(item.title)" -->
+            <button mat-icon-button (click)="decrementItem(item)"><mat-icon>keyboard_arrow_down</mat-icon></button> <!--  -->
             {{item.quantity}}
-            <button mat-icon-button ><mat-icon>keyboard_arrow_up</mat-icon></button> <!-- (click)="incrementItem(item)" -->
+            <button mat-icon-button (click)="incrementItem(item)"><mat-icon>keyboard_arrow_up</mat-icon></button> <!--  -->
           </td>
           <td mat-footer-cell *matFooterCellDef>
             <button mat-button routerLink="/products">
@@ -70,7 +70,7 @@
             <mat-label class="total-amt"> {{subTotal | currency}} </mat-label>
             <input matInput>
           </mat-form-field>
-          <button mat-button routerLink="/checkout">
+          <button class="checkout-btn" mat-button routerLink="/checkout">
             Proceed to Checkout
           </button><br>
           <!-- <mat-icon style="font-size: 3em;" fontSet="fab" fontIcon="fa-cc-visa"></mat-icon>
@@ -84,7 +84,7 @@
 </div>
 
 <div class="container" *ngIf="product.length == 0">
-  <mat-card class="empty-cart">
+  <mat-card class="mat-elevation-z8">
     <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
     <h2>Your cart is empty</h2>
     <h3>Add item(s) to it now</h3>

@@ -19,8 +19,8 @@ table {
   padding: 10px;
   color: #595499;
   font-weight: 100;
-  img {
-    width: 120px;
+  .product-img {
+    width: 140px;
     height: 150px;
   }
   .quantity mat-icon {
@@ -31,22 +31,22 @@ table {
   }
 }
 
-// Mat Footer Row
+// Buttons in cart card (Continue Shopping/Empty Cart/Shop Now)
 .mat-button {
-  border: 2px solid #D50032;
+  border: 2px solid #595499;
   font-weight: bold;
   margin: 5px;
-  color: #D50032;
+  color: #595499;
   border-radius: 20px;
   padding: 0 30px;
 }
 .mat-button:hover {
-  background-color: #D50032;
+  background-color: #595499;
   color: #FFF;
   transition: 0.1s ease-in-out;
 }
 
-// Checkout card form/Visa/MasterCard/PayPal/Discover icons
+// Checkout card form/Checkout button
 .checkout-container {
   width: 70%;
   text-align: center;
@@ -54,13 +54,22 @@ table {
     margin: 0px 20px;
     position: sticky;
     top: 200px;
-    .mat-icon {
-      margin: 0px 15px;
-      color: darkgray;
-    }
+  }
+  .checkout-btn {
+    border: 2px solid #D50032;
+    font-weight: bold;
+    margin: 5px;
+    color: #D50032;
+    border-radius: 20px;
+    padding: 0 30px;
+  }
+  .checkout-btn:hover {
+    background-color: #D50032;
+    color: #FFF;
+    transition: 0.1s ease-in-out;
   }
 }
-
+// Static Subtotal
 .total-price {
   width: 100%;
   font-size: larger;
@@ -73,7 +82,7 @@ table {
 }
 
 // If cart is empty, display this card
-.empty-cart {
+.mat-elevation-z8 {
   text-align: center;
   img {
     width: 200px;

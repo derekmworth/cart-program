@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../component/product/product.model';
@@ -17,11 +18,6 @@ export class CartService {
   getProduct() {
     return this.productList.asObservable();
   }
-
-  // setProduct(product : any) {
-  //   this.cartItemList.push(...product);
-  //   this.productList.next(product);
-  // }
 
   addToCart(product : Product) {
     this.cartItemList.push(product);
@@ -47,27 +43,35 @@ export class CartService {
     return total;
   }
 
-  // Increment cart items (not working)
-
-  // incrementItem(productId : string): void {
-  //   this.cartItemList.map((item : Product) => {
-  //     if(item.title == productId) {
-  //       return {
-  //         ...item,
-  //         quantity : item.quantity + 1
-  //       }
-  //     }
-  //     return item;
-  //   });
+  // updateValues() {
+  //   var newTotal = 0;
+  //   for (var cartItem of this.cartItemList) {
+  //     newTotal += (cartItem.quantity * eval(cartItem.subTotal));
+  //   }
+  //   newTotal = Math.max(newTotal, 0);
+  //   this.cartTotalBehaviorSubject.next(newTotal);
+  //   return newTotal;
   // }
 
-  // incrementItem(product : Product) {
-  //   this.cartItemList.map((a : any, index : any) => {
-  //     if(product.id === a.id) {
-  //       this.cartItemList + 1;
-  //     }
-  //   });
-  // }
+  // Increment/decrement cart items (not working)
+
+  incrementItem(product : Product) {
+    for( var cartItem of this.cartItemList) {
+      if(product.title == cartItem.title) {
+        cartItem.quantity++;
+      }
+    }
+  //   this.updateValues();
+  }
+
+  decrementItem(product : Product) {
+    for (var cartItem of this.cartItemList) {
+      if(product.title == cartItem.title && cartItem.quantity > 1) {
+        cartItem.quantity--;
+      }
+    }
+    // this.updateValues();
+  }
 
   removeCartItem(product : Product) {
     this.cartItemList.map((a : any, index : any) => {

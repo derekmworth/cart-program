@@ -39,6 +39,7 @@ export class CartComponent implements OnInit {
   dataSource = this.cartService.getProduct();
   public product : Product[] = [];
   public subTotal !: number;
+  // public newTotal !: number;
 
   constructor(private cartService : CartService) { }
 
@@ -46,12 +47,17 @@ export class CartComponent implements OnInit {
     this.cartService.getProduct().subscribe(res => {
       this.product = res;
       this.subTotal = this.cartService.getTotalPrice();
+      // this.newTotal = this.cartService.updateValues();
     });
   }
 
-  // incrementItem(item : Product) {
-  //   this.cartService.incrementItem(item);
-  // }
+  incrementItem(item : Product) {
+    this.cartService.incrementItem(item);
+  }
+
+  decrementItem(item : Product) {
+    this.cartService.decrementItem(item);
+  }
 
   removeItem(item : Product) {
     this.cartService.removeCartItem(item);
