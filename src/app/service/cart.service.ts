@@ -42,15 +42,15 @@ export class CartService {
     return total;
   }
 
-  updateValues() {
-    var newTotal = 0;
+  updateValue() {
+    var updatedTotal = 0;
     for (var cartItem of this.cartItemList) {
-      newTotal += (cartItem.quantity * eval(cartItem.title));
+      updatedTotal += (cartItem.quantity * eval(cartItem.price));
     }
-    return newTotal;
+    return updatedTotal;
   }
 
-  // Increment/decrement cart items (not working)
+  // Increment/decrement cart items
 
   incrementItem(product : Product) {
     for( var cartItem of this.cartItemList) {
@@ -58,7 +58,7 @@ export class CartService {
         cartItem.quantity++;
       }
     }
-    this.updateValues();
+    this.updateValue();
   }
 
   decrementItem(product : Product) {
@@ -67,7 +67,7 @@ export class CartService {
         cartItem.quantity--;
       }
     }
-    // this.updateValues();
+    // this.updateValue();
   }
 
   removeCartItem(product : Product) {

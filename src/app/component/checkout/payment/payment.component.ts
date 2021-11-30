@@ -28,7 +28,7 @@ export class PaymentComponent implements OnInit {
 
   monthControl = new FormControl('', Validators.required);
   yearControl = new FormControl('', Validators.required);
-  // selectFormControl = new FormControl('', Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
   months: Month[] = [
     { month: 'January' },   { month: 'February' },
     { month: 'March' },     { month: 'April' },
@@ -58,7 +58,6 @@ export class PaymentComponent implements OnInit {
       fullName: new FormControl('', [Validators.required]),
       ccNum: new FormControl('', [Validators.required]),
       cvv: new FormControl('', [Validators.required]),
-      selectFormControl: new FormControl('', Validators.required),
     });
   }
 

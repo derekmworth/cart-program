@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   dataSource = this.cartService.getProduct();
   public product : Product[] = [];
   public subTotal !: number;
-  // public newTotal !: number;
+  public updatedTotal !: number;
 
   constructor(private cartService : CartService) { }
 
@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
     this.cartService.getProduct().subscribe(res => {
       this.product = res;
       this.subTotal = this.cartService.getTotalPrice();
-      // this.newTotal = this.cartService.updateValues();
+      this.updatedTotal = this.cartService.updateValue();
     });
   }
 
