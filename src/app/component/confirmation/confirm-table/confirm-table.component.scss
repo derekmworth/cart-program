@@ -68,3 +68,21 @@
 .footer-row {
   border-top: 2px solid #595499;
 }
+
+// If table is empty, display this card
+.empty-table {
+  text-align: center;
+  width: 100%;
+  img {
+    width: 200px;
+  }
+  button {
+    border: 1px solid #d50032;
+    background-color: #E5E4EF;
+    color: #595499;
+  }
+  button:hover {
+    background-color: black;
+    color: red;
+  }
+}

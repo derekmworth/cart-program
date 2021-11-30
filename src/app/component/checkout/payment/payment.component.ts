@@ -28,7 +28,7 @@ export class PaymentComponent implements OnInit {
 
   monthControl = new FormControl('', Validators.required);
   yearControl = new FormControl('', Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
+  // selectFormControl = new FormControl('', Validators.required);
   months: Month[] = [
     { month: 'January' },   { month: 'February' },
     { month: 'March' },     { month: 'April' },
@@ -58,19 +58,19 @@ export class PaymentComponent implements OnInit {
       fullName: new FormControl('', [Validators.required]),
       ccNum: new FormControl('', [Validators.required]),
       cvv: new FormControl('', [Validators.required]),
+      selectFormControl: new FormControl('', Validators.required),
     });
   }
 
   // discount/total
-  public item: Product[] = []
+  public item: Product[] = [];
 
   public subTotal: number = 0;
   public totalDiscount: number = 0;
   public grandTotal: number = 0;
 
   ngOnInit(): void {
-    this.cartService.getProduct()
-    .subscribe(res => {
+    this.cartService.getProduct().subscribe(res => {
       this.item = res;
       this.subTotal = this.cartService.getCartTotal();
     });

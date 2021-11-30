@@ -24,6 +24,7 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Storefront button (when clicked)
   emptyCart() {
     this.cartService.removeAllCart();
   }
