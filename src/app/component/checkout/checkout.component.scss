@@ -13,16 +13,17 @@
     width: 100%;
     text-align: center;
   }
-}
-
-// Header - "Back to order review" button
-.btn-back-to-cart {
-  font-size: 20px;
-  color:  #d50032;
-  font-weight: bold;
-}
-.btn-back-to-cart:hover {
-  color: #595499;
+  .btn-back-to-cart {
+    font-size: 20px;
+    color:  #d50032;
+    font-weight: bold;
+    .icon-back-to-cart {
+      margin-bottom: 3px;
+    }
+  }
+  .btn-back-to-cart:hover {
+    color: #595499;
+  }
 }
 
 // Expansion accordion
