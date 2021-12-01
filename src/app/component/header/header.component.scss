@@ -5,6 +5,7 @@
   z-index: 1000;
   background-color: #E5E4EF;
   padding: 40px 20px 40px 0px;
+  border: 1px solid #595499;
   .btn-main {
     font-size: 30px;
     color: #D50032;
@@ -14,6 +15,9 @@
       margin-right: 10px;
       margin-bottom: 10px;
     }
+  }
+  .btn-main:hover {
+    color: #595499;
   }
   .spacer {
     flex: 1 1 auto;

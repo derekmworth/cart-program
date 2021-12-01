@@ -3,13 +3,13 @@
     <!-- Credit card name -->
     <mat-form-field class="cc-name">
       <mat-label>Full Name</mat-label>
-      <input type="text" matInput [errorStateMatcher]="customErrorStateMatcher" formControlName="fullName" name="none" required>
+      <input type="text" matInput formControlName="fullName" name="none" required>
       <mat-error *ngIf="this.form.controls.fullName.hasError('required')">Entry must not be blank</mat-error>
     </mat-form-field>
     <!-- Credit card number -->
     <mat-form-field class="cc-num">
       <mat-label>Credit Card Number</mat-label>
-      <input type="tel" matInput [errorStateMatcher]="customErrorStateMatcher" formControlName="ccNum" minlength="16" maxlength="16" #input required>
+      <input type="tel" matInput formControlName="ccNum" minlength="16" maxlength="16" #input required>
       <mat-hint align="end">{{ input.value?.length || 0}} /16</mat-hint>
       <mat-error *ngIf="this.form.controls.ccNum.hasError('required')">Entry must not be blank</mat-error>
     </mat-form-field>
@@ -34,7 +34,7 @@
     <!-- Credit card cvv code -->
     <mat-form-field class="cc-cvv">
       <mat-label>CVV</mat-label>
-      <input matInput [errorStateMatcher]="customErrorStateMatcher" formControlName="cvv" minlength="3" maxlength="3" required>
+      <input matInput formControlName="cvv" minlength="3" maxlength="3" required>
       <mat-error *ngIf="this.form.controls.cvv.hasError('required')">Entry must not be blank</mat-error>
     </mat-form-field>
     <!-- Discount code applied -->

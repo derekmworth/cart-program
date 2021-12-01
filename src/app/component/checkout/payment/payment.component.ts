@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { CustomErrorStateMatcher } from './payment-error-message';
 import { CartService } from 'src/app/service/cart.service';
 import { Product } from '../../product/product.model';
 import { DatePipe } from '@angular/common';
@@ -23,9 +22,9 @@ interface Year {
 })
 
 export class PaymentComponent implements OnInit {
+  form: FormGroup;
 
   // Credit card expiration date
-
   monthControl = new FormControl('', Validators.required);
   yearControl = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
@@ -50,9 +49,6 @@ export class PaymentComponent implements OnInit {
 
 
   // Validation requirements (Forms must be filled before button activates)
-  form: FormGroup;
-  customErrorStateMatcher = new CustomErrorStateMatcher();
-
   constructor(private fb: FormBuilder, private cartService: CartService) {
     this.form = this.fb.group ({
       fullName: new FormControl('', [Validators.required]),
