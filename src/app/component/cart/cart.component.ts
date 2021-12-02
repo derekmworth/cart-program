@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
       }
     });
     deleteConfirm.afterClosed().subscribe(result => {
-      if(result === true) {
+      if(result == true) {
         this.cartService.removeCartItem(item);
       }
     });
@@ -79,9 +79,23 @@ export class CartComponent implements OnInit {
      this.cartService.removeCartItem(item);
    } */
 
-  emptyCart() {
+   emptyCart() {
+     const deleteConfirm = this.dialog.open(DeleteConfirmComponent, {
+       data: {
+         title: 'Confirm Delete',
+         message: 'Are you sure you want to delete all items from your cart?'
+       }
+     });
+     deleteConfirm.afterClosed().subscribe(result => {
+      if(result == true) {
+        this.cartService.removeAllCart();
+      }
+     });
+   }
+
+  /* emptyCart() {
     this.cartService.removeAllCart();
-  }
+  } */
 
   displayedColumns: string[] = ['image', 'description', 'quantity', 'price', 'remove'];
   // Datasource for static items
