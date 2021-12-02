@@ -10,7 +10,10 @@ export class CartService {
   public cartItemList : any = []
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
-  cartTotalBehaviorSubject: any;
+  private cartTotalBehaviorSubject = new BehaviorSubject<number>(0);
+  currentCartTotal = this.cartTotalBehaviorSubject.asObservable();
+  // cartTotal = this.getCartTotal();
+  // cartQuantity = this.getCartQuantity();
 
   constructor() { }
 
@@ -42,13 +45,9 @@ export class CartService {
     return total;
   }
 
-  updateValue() {
-    var updatedTotal = 0;
-    for (var cartItem of this.cartItemList) {
-      updatedTotal += (cartItem.quantity * eval(cartItem.price));
-    }
-    return updatedTotal;
-  }
+  // getCartQuantity() {
+
+  // }
 
   // Increment/decrement cart items
 
@@ -58,7 +57,7 @@ export class CartService {
         cartItem.quantity++;
       }
     }
-    this.updateValue();
+    // this.updatePrices();
   }
 
   decrementItem(product : Product) {
@@ -67,8 +66,13 @@ export class CartService {
         cartItem.quantity--;
       }
     }
-    // this.updateValue();
+    // this.updatePrices();
   }
+
+  // updatePrices() {
+  //   this.cartQuantity = this.getCartQuantity();
+  //   this.cartTotal = this.getCartTotal();
+  // }
 
   removeCartItem(product : Product) {
     this.cartItemList.map((a : any, index : any) => {

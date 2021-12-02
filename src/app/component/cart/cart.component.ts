@@ -3,6 +3,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { Product } from '../product/product.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
+import { Subscription } from 'rxjs';
 
 // Static Items
 // export interface Items {
@@ -39,7 +40,7 @@ export class CartComponent implements OnInit {
   dataSource = this.cartService.getProduct();
   public product : Product[] = [];
   public subTotal !: number;
-  public updatedTotal !: number;
+  public cartTotalSubscription !: Subscription;
 
   constructor(private cartService : CartService, public dialog : MatDialog) { }
 
@@ -47,8 +48,11 @@ export class CartComponent implements OnInit {
     this.cartService.getProduct().subscribe(res => {
       this.product = res;
       this.subTotal = this.cartService.getTotalPrice();
-      this.updatedTotal = this.cartService.updateValue();
-    });
+
+      });
+    // this.cartTotalSubscription = this.cartService.currentCartTotal.subscribe(
+    //     cartTotal => this.total = cartTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    //   );
   }
 
   incrementItem(item : Product) {
