@@ -1,0 +1,21 @@
+// Title of dialog box
+.title {
+  text-align: center;
+  color: #595499;
+}
+// Message inside dialog box
+.content {
+  text-align: center;
+}
+// Delete/Cancel buttons
+.buttons {
+  justify-content: center;
+  .delete {
+    background-color: #D50032;
+    color: #FFF;
+  }
+  .cancel {
+    background-color: #E5E4EF;
+  }
+}
+

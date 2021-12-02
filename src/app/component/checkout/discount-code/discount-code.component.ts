@@ -24,13 +24,12 @@ export class DiscountCodeComponent implements OnInit {
   }
 
   onCodeButton() {
-    if (this.form.value.test == '' || this.form.value.test == 'CPE20') {
+    if (this.form.value.test == 'CPE20') {
       this.showValidation = 'Valid Code';
     }
-    else {
+    else if (this.form.value.test == '') {
       this.showValidation = 'Invalid Code';
     }
-    console.log(this.showValidation);
   }
 
 }

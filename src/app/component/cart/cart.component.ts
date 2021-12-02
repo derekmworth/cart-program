@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { Product } from '../product/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
 
 // Static Items
 // export interface Items {
@@ -26,8 +28,6 @@ import { Product } from '../product/product.model';
 //     quantity: 6, price: 15.99},
 // ];
 
-
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
   public subTotal !: number;
   public updatedTotal !: number;
 
-  constructor(private cartService : CartService) { }
+  constructor(private cartService : CartService, public dialog : MatDialog) { }
 
   ngOnInit(): void {
     this.cartService.getProduct().subscribe(res => {
@@ -59,9 +59,25 @@ export class CartComponent implements OnInit {
     this.cartService.decrementItem(item);
   }
 
+  // Remove item (with dialog box)
   removeItem(item : Product) {
-    this.cartService.removeCartItem(item);
+    const deleteConfirm = this.dialog.open(DeleteConfirmComponent, {
+      data: {
+        title: 'Confirm Delete',
+        message: 'Are you sure you want to delete (' + item.quantity + ') ' + item.title + '?'
+      }
+    });
+    deleteConfirm.afterClosed().subscribe(result => {
+      if(result === true) {
+        this.cartService.removeCartItem(item);
+      }
+    });
   }
+
+  // Remove item (without dialog box)
+  /* removeItem(item : Product) {
+     this.cartService.removeCartItem(item);
+   } */
 
   emptyCart() {
     this.cartService.removeAllCart();

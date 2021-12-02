@@ -23,6 +23,7 @@ import { PaymentComponent } from './component/checkout/payment/payment.component
 import { DiscountCodeComponent } from './component/checkout/discount-code/discount-code.component';
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { ConfirmTableComponent } from './component/confirmation/confirm-table/confirm-table.component';
+import { DeleteConfirmComponent } from './component/cart/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,13 @@ import { ConfirmTableComponent } from './component/confirmation/confirm-table/co
     DiscountCodeComponent,
     ConfirmationComponent,
     ConfirmTableComponent,
-
+    DeleteConfirmComponent,
   ],
+
+  entryComponents: [
+    DeleteConfirmComponent,
+  ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
