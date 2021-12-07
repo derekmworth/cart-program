@@ -10,7 +10,6 @@ import { HeaderComponent } from './component/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './shared/filter.pipe';
 import { CardModule } from 'ngx-card';
-import { NgxMaskModule } from 'ngx-mask';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -24,6 +23,7 @@ import { DiscountCodeComponent } from './component/checkout/discount-code/discou
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { ConfirmTableComponent } from './component/confirmation/confirm-table/confirm-table.component';
 import { DeleteConfirmComponent } from './component/cart/delete-confirm/delete-confirm.component';
+import { SharedService } from './service/shared.service';
 
 @NgModule({
   declarations: [
@@ -57,9 +57,8 @@ import { DeleteConfirmComponent } from './component/cart/delete-confirm/delete-c
     FlexLayoutModule,
     MaterialModule,
     CardModule,
-    NgxMaskModule.forRoot(),
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,19 @@
+// div
 .discount-code {
   margin-top: 30px;
 }
-
+// text box
 .discount-input {
-  width: 30%;
+  width: 50%;
 }
-
+// Apply Code button
 .btn-discount {
   margin-left: 20px;
+  padding: 0 40px;
   border-radius: 20px;
   color: #fff;
   background-color: #d50032;
 }
-
 .btn-discount:hover:enabled {
   background-color: maroon;
 }

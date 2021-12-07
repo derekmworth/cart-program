@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
   dataSource = this.cartService.getProduct();
   public product : Product[] = [];
   public subTotal !: number;
-  public cartTotalSubscription !: Subscription;
+  // public cartTotalSubscription !: Subscription;
 
   constructor(private cartService : CartService, public dialog : MatDialog) { }
 
@@ -50,9 +50,6 @@ export class CartComponent implements OnInit {
       this.subTotal = this.cartService.getTotalPrice();
 
       });
-    // this.cartTotalSubscription = this.cartService.currentCartTotal.subscribe(
-    //     cartTotal => this.total = cartTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    //   );
   }
 
   incrementItem(item : Product) {
@@ -97,6 +94,7 @@ export class CartComponent implements OnInit {
      });
    }
 
+  // Empty cart (without dialog box)
   /* emptyCart() {
     this.cartService.removeAllCart();
   } */

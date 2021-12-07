@@ -24,7 +24,7 @@
     <ng-container matColumnDef="discount">
       <th mat-header-cell *matHeaderCellDef>Discount</th>
       <td class="body-discount" mat-cell *matCellDef="let item"> {{item.discount | currency}} </td> <!--  -->
-      <td class="footer-discount" mat-footer-cell *matFooterCellDef>$0.00</td> <!-- {{totalDiscount | currency}} -->
+      <td class="footer-discount" mat-footer-cell *matFooterCellDef>{{totalDiscount | currency}}</td> <!--  -->
     </ng-container>
     <!-- Quantity Column -->
     <ng-container matColumnDef="quantity">

@@ -3,7 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { CartService } from 'src/app/service/cart.service';
 import { Product } from '../../product/product.model';
+import { DiscountCode } from '../discount-code/discount-code.model';
+import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
+import { SharedService } from 'src/app/service/shared.service';
 
 
 interface Month {
@@ -22,7 +25,9 @@ interface Year {
 })
 
 export class PaymentComponent implements OnInit {
-  form: FormGroup;
+  // dataSource = this.sharedService.getCode();
+  myFormGroup: FormGroup;
+
 
   // Credit card expiration date
   monthControl = new FormControl('', Validators.required);
@@ -49,8 +54,8 @@ export class PaymentComponent implements OnInit {
 
 
   // Validation requirements (Forms must be filled before button activates)
-  constructor(private fb: FormBuilder, private cartService: CartService) {
-    this.form = this.fb.group ({
+  constructor(private myFormBuilder: FormBuilder, private cartService: CartService, private sharedService: SharedService) {
+    this.myFormGroup = this.myFormBuilder.group ({
       fullName: new FormControl('', [Validators.required]),
       ccNum: new FormControl('', [Validators.required]),
       cvv: new FormControl('', [Validators.required]),
@@ -58,8 +63,10 @@ export class PaymentComponent implements OnInit {
   }
 
   // discount/total
-  public item: Product[] = [];
+  public item: Product[] = []; // Product model
+  public codeText = new DiscountCode('');
 
+  public discountCodeSubscription !: Subscription;
   public subTotal: number = 0;
   public totalDiscount: number = 0;
   public grandTotal: number = 0;
@@ -75,7 +82,12 @@ export class PaymentComponent implements OnInit {
       this.grandTotal += eval(item.total) * item.quantity;
       this.totalDiscount += eval(item.discount) * item.quantity;
     }
+
+    this.discountCodeSubscription = this.sharedService.currentDiscountCode.subscribe(discountCode => {
+      this.codeText = discountCode;
+    });
   }
+
 
   // Purchase agreement checkmark toggle/date
   isClicked = false;

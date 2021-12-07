@@ -1,35 +1,46 @@
-import { Component, OnInit, Output, ElementRef, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from 'src/app/service/shared.service';
+import { Subscription } from 'rxjs';
+import { DiscountCode } from './discount-code.model';
 
 @Component({
   selector: 'app-discount-code',
   templateUrl: './discount-code.component.html',
   styleUrls: ['./discount-code.component.scss']
 })
-export class DiscountCodeComponent implements OnInit {
-
-  // Discount Code
-  form: FormGroup;
-  discountCode = '';
-  showValidation = '';
+export class DiscountCodeComponent implements OnInit { //, OnDestroy
 
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
+  discountCode = new DiscountCode('');
+  myFormGroup: FormGroup;
+  showValidation = false;
+  validationMessage = '';
+  displayText = '';
+
+
+  constructor(private myFormBuilder: FormBuilder, private sharedService: SharedService) {
+    this.myFormGroup = this.myFormBuilder.group({
       discountCode: new FormControl('', [Validators.required]),
     });
   }
 
-  ngOnInit(): void {
+  enterCode(newCode: DiscountCode) {
+    if(this.myFormGroup.value.discountCode == 'CPE20') {
+      this.validationMessage = 'Discount code successfully applied';
+      this.showValidation = true;
+      this.sharedService.applyDiscountCode(newCode);
+    }
+    else {
+      this.validationMessage = 'Invalid or expired code. Please check your code and try again.';
+      this.showValidation = true;
+    }
   }
 
-  onCodeButton() {
-    if (this.form.value.test == 'CPE20') {
-      this.showValidation = 'Valid Code';
-    }
-    else if (this.form.value.test == '') {
-      this.showValidation = 'Invalid Code';
-    }
-  }
+  ngOnInit() { }
+
+  // ngOnDestroy() {
+  //   this.codeSubscription.unsubscribe();
+  // }
 
 }
