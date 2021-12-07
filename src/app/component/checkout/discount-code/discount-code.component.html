@@ -1,13 +1,13 @@
 <div class="discount-code">
   <h1 class="">Have a discount code?</h1>
-  <form [formGroup]="myFormGroup">
+  <form [formGroup]="formGroup">
     <mat-form-field appearance="legacy" class="discount-input">
       <mat-label>Enter discount code:</mat-label>
       <input type="text" matInput formControlName="discountCode" id="codeInput" #input>
-      <mat-error *ngIf="this.myFormGroup.controls.discountCode.hasError('required')">No discount code has been entered</mat-error>
+      <mat-error *ngIf="this.formGroup.controls.discountCode.hasError('required')">No discount code has been entered</mat-error>
       <mat-hint>{{validationMessage}}</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="enterCode(discountCode)" [disabled]="myFormGroup.invalid" class="btn-discount">Apply Code</button> <!-- displayText = input.value;  -->
+    <button mat-raised-button (click)="enterCode(discountCode)" [disabled]="formGroup.invalid" class="btn-discount">Apply Code</button> <!-- displayText = input.value;  -->
     <!-- <h3>you have typed: <span> {{displayText}} </span></h3> -->
   </form>
 </div>

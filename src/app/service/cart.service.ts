@@ -8,12 +8,12 @@ import { Product } from '../component/product/product.model';
 export class CartService {
 
   public cartItemList : any = []
-  public productList = new BehaviorSubject<any>([]);
+  public productList = new BehaviorSubject<Product[]>([]);
   public search = new BehaviorSubject<string>("");
   private cartTotalBehaviorSubject = new BehaviorSubject<number>(0);
-  currentCartTotal = this.cartTotalBehaviorSubject.asObservable();
-  // cartTotal = this.getCartTotal();
-  // cartQuantity = this.getCartQuantity();
+  // currentCartTotal = this.cartTotalBehaviorSubject.asObservable();
+  cartTotal = this.getCartTotal();
+  cartQuantity = this.getCartQuantity();
 
   constructor() { }
 
@@ -45,9 +45,18 @@ export class CartService {
     return total;
   }
 
-  // getCartQuantity() {
+  updatePrices() {
+    this.cartQuantity = this.getCartQuantity();
+    this.cartTotal = this.getCartTotal();
+  }
 
-  // }
+  getCartQuantity() {
+    var quantity = 0;
+    for(var cartItem of this.cartItemList) {
+      quantity += cartItem.quantity;
+    }
+    return quantity;
+  }
 
   // Increment/decrement cart items
 
@@ -57,7 +66,7 @@ export class CartService {
         cartItem.quantity++;
       }
     }
-    // this.updatePrices();
+    this.updatePrices();
   }
 
   decrementItem(product : Product) {
@@ -66,13 +75,8 @@ export class CartService {
         cartItem.quantity--;
       }
     }
-    // this.updatePrices();
+    this.updatePrices();
   }
-
-  // updatePrices() {
-  //   this.cartQuantity = this.getCartQuantity();
-  //   this.cartTotal = this.getCartTotal();
-  // }
 
   removeCartItem(product : Product) {
     this.cartItemList.map((a : any, index : any) => {

@@ -13,20 +13,20 @@ export class DiscountCodeComponent implements OnInit { //, OnDestroy
 
 
   discountCode = new DiscountCode('');
-  myFormGroup: FormGroup;
+  formGroup: FormGroup;
   showValidation = false;
   validationMessage = '';
   displayText = '';
 
 
-  constructor(private myFormBuilder: FormBuilder, private sharedService: SharedService) {
-    this.myFormGroup = this.myFormBuilder.group({
+  constructor(private formBuilder: FormBuilder, private sharedService: SharedService) {
+    this.formGroup = this.formBuilder.group({
       discountCode: new FormControl('', [Validators.required]),
     });
   }
 
   enterCode(newCode: DiscountCode) {
-    if(this.myFormGroup.value.discountCode == 'CPE20') {
+    if(this.formGroup.value.discountCode == 'CPE20') {
       this.validationMessage = 'Discount code successfully applied';
       this.showValidation = true;
       this.sharedService.applyDiscountCode(newCode);

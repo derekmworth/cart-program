@@ -14,28 +14,28 @@ export class BillingComponent implements OnInit {
   userInfo = new UserInfo('', '', '', '', '', '', '', '');
   savedUserInfo = new UserInfo('', '', '', '', '', '', '', '');
   useSavedInfo = false;
-  myFormGroup: FormGroup;
+  formGroup: FormGroup;
 
 
-  constructor(myFormBuilder: FormBuilder, private billingService: BillingService) {
-    this.myFormGroup = myFormBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
+  constructor(formBuilder: FormBuilder, private billingService: BillingService) {
+    this.formGroup = formBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
   }
 
   ngOnInit(): void {
   }
 
   updateBillingInfo() {
-    this.billingService.updateCurrentBillingInfo(this.myFormGroup.value);
+    this.billingService.updateCurrentBillingInfo(this.formGroup.value);
   }
 
   onToggleUserProfile() {
-    const myFormBuilder = new FormBuilder;
+    const formBuilder = new FormBuilder;
     if (this.useSavedInfo) {
-      this.savedUserInfo = this.myFormGroup.value;
-      this.myFormGroup = myFormBuilder.group(this.eProfileTemplate);
+      this.savedUserInfo = this.formGroup.value;
+      this.formGroup = formBuilder.group(this.eProfileTemplate);
     }
     else {
-      this.myFormGroup = myFormBuilder.group(this.savedUserInfo);
+      this.formGroup = formBuilder.group(this.savedUserInfo);
     }
 
     this.updateBillingInfo;

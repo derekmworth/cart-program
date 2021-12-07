@@ -14,11 +14,11 @@ export class ShippingComponent implements OnInit {
   billingInfoSubscription !: Subscription;
   billingUserInfo = new UserInfo('', '', '', '', '', '', '', '');
   savedUserInfo = new UserInfo('', '', '', '', '', '', '', '');
-  myFormGroup: FormGroup;
+  formGroup: FormGroup;
   useBillingInfo = false;
 
-  constructor(myFormBuilder: FormBuilder, private billingService: BillingService) {
-    this.myFormGroup = myFormBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
+  constructor(formBuilder: FormBuilder, private billingService: BillingService) {
+    this.formGroup = formBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
   }
 
   ngOnInit(): void {
@@ -30,10 +30,10 @@ export class ShippingComponent implements OnInit {
   }
 
   onToggleUseBilling() {
-    const myFormBuilder = new FormBuilder;
+    const formBuilder = new FormBuilder;
     if(this.useBillingInfo) {
-      this.savedUserInfo = this.myFormGroup.value;
-      this.myFormGroup = myFormBuilder.group(this.billingUserInfo);
+      this.savedUserInfo = this.formGroup.value;
+      this.formGroup = formBuilder.group(this.billingUserInfo);
     }
   }
 }

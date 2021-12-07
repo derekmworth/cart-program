@@ -26,7 +26,7 @@ interface Year {
 
 export class PaymentComponent implements OnInit {
   // dataSource = this.sharedService.getCode();
-  myFormGroup: FormGroup;
+  formGroup: FormGroup;
 
 
   // Credit card expiration date
@@ -54,8 +54,8 @@ export class PaymentComponent implements OnInit {
 
 
   // Validation requirements (Forms must be filled before button activates)
-  constructor(private myFormBuilder: FormBuilder, private cartService: CartService, private sharedService: SharedService) {
-    this.myFormGroup = this.myFormBuilder.group ({
+  constructor(private formBuilder: FormBuilder, private cartService: CartService, private sharedService: SharedService) {
+    this.formGroup = this.formBuilder.group ({
       fullName: new FormControl('', [Validators.required]),
       ccNum: new FormControl('', [Validators.required]),
       cvv: new FormControl('', [Validators.required]),

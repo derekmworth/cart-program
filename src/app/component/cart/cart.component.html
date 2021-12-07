@@ -1,6 +1,6 @@
-<div style="display: flex;" class="container" *ngIf="product.length != 0"> <!-- -->
+<div style="display: flex;" class="container" *ngIf="product.length != 0">
   <div class="cart-container" >
-      <table mat-table  class="mat-elevation-z8" [dataSource]="dataSource"> <!-- -->
+      <table mat-table  class="mat-elevation-z8" [dataSource]="dataSource">
 
         <!-- Image Column -->
         <ng-container matColumnDef="image">
@@ -23,9 +23,9 @@
         <ng-container matColumnDef="quantity">
           <th mat-header-cell *matHeaderCellDef> Quantity </th>
           <td class="quantity" mat-cell *matCellDef="let item">
-            <button mat-icon-button (click)="decrementItem(item)"><mat-icon>keyboard_arrow_down</mat-icon></button> <!--  -->
+            <button mat-icon-button (click)="decrementItem(item)"><mat-icon>keyboard_arrow_down</mat-icon></button>
             {{item.quantity}}
-            <button mat-icon-button (click)="incrementItem(item)"><mat-icon>keyboard_arrow_up</mat-icon></button> <!--  -->
+            <button mat-icon-button (click)="incrementItem(item)"><mat-icon>keyboard_arrow_up</mat-icon></button>
           </td>
           <td mat-footer-cell *matFooterCellDef>
             <button mat-button routerLink="/products">
