@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/service/shared.service';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/service/cart.service';
 import { DiscountCode } from './discount-code.model';
 
 @Component({
@@ -11,25 +12,29 @@ import { DiscountCode } from './discount-code.model';
 })
 export class DiscountCodeComponent implements OnInit { //, OnDestroy
 
-
-  discountCode = new DiscountCode('');
   formGroup: FormGroup;
   showValidation = false;
   validationMessage = '';
   displayText = '';
 
+  discountCode !: DiscountCode;
 
-  constructor(private formBuilder: FormBuilder, private sharedService: SharedService) {
+
+  constructor(private formBuilder: FormBuilder,
+              private sharedService: SharedService,
+              private cartService: CartService) {
     this.formGroup = this.formBuilder.group({
       discountCode: new FormControl('', [Validators.required]),
     });
   }
 
-  enterCode(newCode: DiscountCode) {
+  enterCode() {
     if(this.formGroup.value.discountCode == 'CPE20') {
+      this.cartService.addDiscount(new DiscountCode(this.formGroup.value.enteredCode, 20))
       this.validationMessage = 'Discount code successfully applied';
       this.showValidation = true;
-      this.sharedService.applyDiscountCode(newCode);
+      this.sharedService.getCode();
+      // console.log(this.formGroup.value.discountCode);
     }
     else {
       this.validationMessage = 'Invalid or expired code. Please check your code and try again.';

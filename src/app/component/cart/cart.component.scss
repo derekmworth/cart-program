@@ -73,6 +73,7 @@ table {
 .total-price {
   width: 100%;
   font-size: larger;
+  pointer-events: none;
   .total-amt {
     float: right;
     color: black;

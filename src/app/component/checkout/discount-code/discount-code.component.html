@@ -7,7 +7,7 @@
       <mat-error *ngIf="this.formGroup.controls.discountCode.hasError('required')">No discount code has been entered</mat-error>
       <mat-hint>{{validationMessage}}</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="enterCode(discountCode)" [disabled]="formGroup.invalid" class="btn-discount">Apply Code</button> <!-- displayText = input.value;  -->
+    <button mat-raised-button (click)="enterCode()" [disabled]="formGroup.invalid" class="btn-discount">Apply Code</button> <!-- displayText = input.value;  -->
     <!-- <h3>you have typed: <span> {{displayText}} </span></h3> -->
   </form>
 </div>

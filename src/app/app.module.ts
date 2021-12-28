@@ -23,7 +23,6 @@ import { DiscountCodeComponent } from './component/checkout/discount-code/discou
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { ConfirmTableComponent } from './component/confirmation/confirm-table/confirm-table.component';
 import { DeleteConfirmComponent } from './component/cart/delete-confirm/delete-confirm.component';
-import { SharedService } from './service/shared.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +57,7 @@ import { SharedService } from './service/shared.service';
     MaterialModule,
     CardModule,
   ],
-  providers: [SharedService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

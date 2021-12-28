@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BillingService } from 'src/app/service/billing.service';
+import { SharedService } from 'src/app/service/shared.service';
 import { UserInfo } from '../userInfo.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class BillingComponent implements OnInit {
   formGroup: FormGroup;
 
 
-  constructor(formBuilder: FormBuilder, private billingService: BillingService) {
+  constructor(formBuilder: FormBuilder, private sharedService: SharedService) {
     this.formGroup = formBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
   }
 
@@ -25,7 +25,7 @@ export class BillingComponent implements OnInit {
   }
 
   updateBillingInfo() {
-    this.billingService.updateCurrentBillingInfo(this.formGroup.value);
+    this.sharedService.updateCurrentBillingInfo(this.formGroup.value);
   }
 
   onToggleUserProfile() {

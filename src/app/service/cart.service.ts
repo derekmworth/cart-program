@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DiscountCode } from '../component/checkout/discount-code/discount-code.model';
 import { Product } from '../component/product/product.model';
 
 @Injectable({
@@ -7,22 +8,28 @@ import { Product } from '../component/product/product.model';
 })
 export class CartService {
 
-  public cartItemList : any = []
-  public productList = new BehaviorSubject<Product[]>([]);
+  cartItemList : any = []
+  productList = new BehaviorSubject<Product[]>([]);
+
   public search = new BehaviorSubject<string>("");
   private cartTotalBehaviorSubject = new BehaviorSubject<number>(0);
-  // currentCartTotal = this.cartTotalBehaviorSubject.asObservable();
+
+  currentCartTotal = this.cartTotalBehaviorSubject.asObservable();
+  currentCartItems = this.productList.asObservable();
+
+  discountCode = new DiscountCode('none', 0);
+  private discountCodeBehaviorSubject = new BehaviorSubject<DiscountCode>(this.discountCode);
+  currentDiscountCode = this.discountCodeBehaviorSubject.asObservable();
+
   cartTotal = this.getCartTotal();
   cartQuantity = this.getCartQuantity();
-
-  constructor() { }
 
   getProduct() {
     return this.productList.asObservable();
   }
 
-  addToCart(product : Product) {
-    this.cartItemList.push(product);
+  addToCart(item : Product) {
+    this.cartItemList.push(item);
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
   }
@@ -40,6 +47,7 @@ export class CartService {
     for (var cartItem of this.cartItemList) {
       total += (cartItem.quantity * eval(cartItem.subTotal));
     }
+    total -= this.discountCode.discountAmount
     total = Math.max(total, 0);
     this.cartTotalBehaviorSubject.next(total);
     return total;
@@ -57,6 +65,12 @@ export class CartService {
     }
     return quantity;
   }
+  // Discount code
+  addDiscount(code: DiscountCode) {
+    this.discountCode = code;
+    this.discountCodeBehaviorSubject.next(code);
+    this.updatePrices();
+  }
 
   // Increment/decrement cart items
 
@@ -67,6 +81,7 @@ export class CartService {
       }
     }
     this.updatePrices();
+    // this.productList.next(this.cartItemList);
   }
 
   decrementItem(product : Product) {

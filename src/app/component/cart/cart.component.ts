@@ -17,16 +17,23 @@ export class CartComponent implements OnInit {
   public product : Product[] = [];
   public subTotal !: number;
   public total !: string;
+  public cartContentSubscription !: Subscription;
   public subTotalSubscription !: Subscription;
 
   constructor(private cartService : CartService, public dialog : MatDialog) { }
 
   ngOnInit(): void {
-    this.cartService.getProduct().subscribe(res => { //
+    this.cartContentSubscription = this.cartService.getProduct().subscribe(res => { //
       this.product = res;
       this.subTotal = this.cartService.getTotalPrice(); // getTotalPrice()
       });
   }
+
+  // updateQuantity(item: Product, event: any) {
+  //   const newQuantity = event.target.value;
+  //   console.log(`Set ${item.title} to ${newQuantity}`);
+  //   this.cartService.cartQuantity;
+  // }
 
   incrementItem(item : Product) {
     this.cartService.incrementItem(item);

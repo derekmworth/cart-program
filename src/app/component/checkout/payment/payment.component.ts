@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { CartService } from 'src/app/service/cart.service';
 import { Product } from '../../product/product.model';
-import { DiscountCode } from '../discount-code/discount-code.model';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/service/shared.service';
@@ -25,7 +24,7 @@ interface Year {
 })
 
 export class PaymentComponent implements OnInit {
-  // dataSource = this.sharedService.getCode();
+
   formGroup: FormGroup;
 
 
@@ -50,11 +49,9 @@ export class PaymentComponent implements OnInit {
   ];
   value: any;
 
-  // Adding spaces between credit card numbers
-
-
   // Validation requirements (Forms must be filled before button activates)
-  constructor(private formBuilder: FormBuilder, private cartService: CartService, private sharedService: SharedService) {
+  constructor(private formBuilder: FormBuilder, private cartService: CartService, private sharedService: SharedService
+    ) {
     this.formGroup = this.formBuilder.group ({
       fullName: new FormControl('', [Validators.required]),
       ccNum: new FormControl('', [Validators.required]),
@@ -63,13 +60,16 @@ export class PaymentComponent implements OnInit {
   }
 
   // discount/total
-  public item: Product[] = []; // Product model
-  public codeText = new DiscountCode('');
+  public item: Product[] = [];
 
-  public discountCodeSubscription !: Subscription;
   public subTotal: number = 0;
-  public totalDiscount: number = 0;
   public grandTotal: number = 0;
+  public totalDiscount: number = 0;
+
+  // public codeText = this.sharedService.getDiscountCode();
+  // public discountSubscription !: Subscription;
+  public codeText !: string;
+  subscription: Subscription = new Subscription;
 
   ngOnInit(): void {
     this.cartService.getProduct().subscribe(res => {
@@ -83,11 +83,14 @@ export class PaymentComponent implements OnInit {
       this.totalDiscount += eval(item.discount) * item.quantity;
     }
 
-    this.discountCodeSubscription = this.sharedService.currentDiscountCode.subscribe(discountCode => {
-      this.codeText = discountCode;
-    });
+    this.subscription = this.sharedService.getCode().subscribe(code => this.codeText = code);
+    console.log(this.codeText);
   }
 
+  // applyDiscount() {
+  //   this.subscription = this.sharedService.getCode().subscribe(code => this.codeText = code);
+  //   console.log(this.codeText);
+  // }
 
   // Purchase agreement checkmark toggle/date
   isClicked = false;

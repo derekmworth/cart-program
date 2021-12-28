@@ -1,7 +1,10 @@
 export class DiscountCode {
-  public code: string;
+  public discountText: string;
+  public discountAmount: number;
 
-  constructor(code: string,) {
-    this.code = code;
+
+  constructor(discountText: string, discountAmount: number) {
+    this.discountText = discountText;
+    this.discountAmount = discountAmount;
   }
 }

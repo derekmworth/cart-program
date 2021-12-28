@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { BillingService } from 'src/app/service/billing.service';
+import { SharedService } from 'src/app/service/shared.service';
 import { UserInfo } from '../userInfo.model';
 
 @Component({
@@ -17,12 +17,12 @@ export class ShippingComponent implements OnInit {
   formGroup: FormGroup;
   useBillingInfo = false;
 
-  constructor(formBuilder: FormBuilder, private billingService: BillingService) {
+  constructor(formBuilder: FormBuilder, private sharedService: SharedService) {
     this.formGroup = formBuilder.group(new UserInfo('', '', '', '', '', '', '', ''));
   }
 
   ngOnInit(): void {
-    this.billingInfoSubscription = this.billingService.currentUserInfo.subscribe(userInfo => this.billingUserInfo = userInfo);
+    this.billingInfoSubscription = this.sharedService.currentUserInfo.subscribe(userInfo => this.billingUserInfo = userInfo);
   }
 
   ngOnDestroy() {
